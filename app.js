@@ -16,7 +16,7 @@ coordinatesService.getCoordinates(locationName, function(coordinates){
   locationCoordinates.lat = lat;
   locationCoordinates.lon = lon;
 
-  locationData.locationCoordinates = locationCoordinates;
+  locationData.coordinates = locationCoordinates;
 
   if (!locationData.weather) { return; }
 
@@ -24,17 +24,19 @@ coordinatesService.getCoordinates(locationName, function(coordinates){
 });
 
 weatherService.getWeather(locationName, function(degreesCelsius) {
-  locationData.locationWeather = degreesCelsius;
-  
-  if (!locationData.locationCoordinates) { return; }
+  console.log(degreesCelsius);
+
+  locationData.weather = degreesCelsius;
+
+  if (!locationData.coordinates) { return; }
 
   getPhotos(locationData);
 });
 
 var getPhotos = function(locationData) {
   flickrService.getPhotos(
-    locationData.locationCoordinates,
-    locationData.locationWeather,
+    locationData.coordinates,
+    locationData.weather,
     function(photosURLsArray){
       console.log(photosURLsArray);
     });
