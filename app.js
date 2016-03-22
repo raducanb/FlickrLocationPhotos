@@ -34,8 +34,9 @@ coordinatesService.getCoordinates(locationName,
 var getPhotos = function(locationData) {
   flickrService.getPhotos(
     locationData.coordinates,
-    locationData.weather,
+    locationData.mostPopularVenueName,
     function(photosURLsArray){
+      console.log("Photos of venue: ");
       console.log(photosURLsArray);
     });
   };
