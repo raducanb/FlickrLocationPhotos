@@ -1,7 +1,6 @@
 var locationName = 'Munchen';
 
 var coordinatesService = require('./coordinatesService.js');
-var weatherService = require('./weatherService.js');
 var flickrService = require('./flickrService.js');
 
 var locationData = {};
@@ -23,15 +22,7 @@ coordinatesService.getCoordinates(locationName, function(coordinates){
   getPhotos(locationData);
 });
 
-weatherService.getWeather(locationName, function(degreesCelsius) {
-  console.log(degreesCelsius);
 
-  locationData.weather = degreesCelsius;
-
-  if (!locationData.coordinates) { return; }
-
-  getPhotos(locationData);
-});
 
 var getPhotos = function(locationData) {
   flickrService.getPhotos(
