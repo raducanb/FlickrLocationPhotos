@@ -30,8 +30,7 @@ coordinatesService.getCoordinates(locationName,
     }
   );
 
-
-var getPhotos = function(locationData) {
+var getPhotosForLocationData = function(locationData) {
   flickrService.getPhotos(
     locationData.coordinates,
     locationData.mostPopularVenueName,
