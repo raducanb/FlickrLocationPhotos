@@ -1,12 +1,13 @@
 var https = require('https');
 
 module.exports.getPhotos =
-function(locationCoordinates, locationWeather, callback) {
+function(locationCoordinates, venueName, callback) {
   var options = {
     host: 'api.flickr.com',
     path: '/services/rest/?method=flickr.photos.search&'
           + "lat=" + locationCoordinates.lat + "&"
           + "lon=" + locationCoordinates.lon + "&"
+          + "text=" + escape(venueName) + "&"
           + "per_page=5&format=json&nojsoncallback=1&media=photos&"
           + "group_id=1463451@N25&license=4,5,6,7&"
           + "api_key=" + process.env.FLICKR_KEY
