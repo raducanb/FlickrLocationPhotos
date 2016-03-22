@@ -4,7 +4,7 @@ module.exports.getCoordinates =
 function(locationName, callback){
     var options = {
       host: 'dev.virtualearth.net',
-      path: '/REST/v1/Locations?q=' + locationName
+      path: '/REST/v1/Locations?q=' + escape(locationName)
             + '&key=' + process.env.VIRTUAL_EARTH_KEY
     }
 
